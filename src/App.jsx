@@ -1,21 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Card from './Card'
+import { useState } from "react";
+import Card from "./Card";
+import Form from "./Form";
+import "./App.css"; 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [formData, setFormData] = useState(null); 
+
+  const handleFormSubmit = (data) => {
+    setFormData(data); 
+  };
 
   return (
-  
-      <div className="App">
-        <h1>Carga de estudiantes </h1>
-        <form> </form>
-      <Card/>
-      </div>
-    
-  )
+    <div className="App">
+      <h1>Elige una marca de moto y Color</h1>
+      <Form onSubmit={handleFormSubmit} />
+      {formData && <Card marca={formData.marca} color={formData.color} />}
+    </div>
+  );
 }
 
-export default App
+export default App;
